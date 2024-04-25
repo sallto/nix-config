@@ -19,8 +19,8 @@
     # You can also split up your configuration and import pieces of it here:
     # ./nvim.nix
     ./firefox.nix
+    ./vscode.nix
   ];
-
   nixpkgs = {
     # You can add overlays here
     overlays = [

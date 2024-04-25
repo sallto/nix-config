@@ -4,7 +4,6 @@
   programs.firefox = {
     enable = true;
     profiles.tom = {
-
       search.engines = {
         "Nix Packages" = {
           urls = [{
@@ -19,6 +18,7 @@
           definedAliases = [ "@np" ];
         };
       };
+      #containersForce = true;
       search.force = true;
 
       bookmarks = [
@@ -42,8 +42,12 @@
       '';                                      
 
       extensions = with inputs.firefox-addons.packages."x86_64-linux"; [
-        ublock-origin
-        sponsorblock
+       ublock-origin
+       sponsorblock
+       bitwarden
+       old-reddit-redirect
+       reddit-enhancement-suite
+       istilldontcareaboutcookies
       ];
 
     };
