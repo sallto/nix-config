@@ -1,21 +1,31 @@
-{ pkgs, inputs, ... }:
-
 {
+  pkgs,
+  inputs,
+  ...
+}: {
   programs.firefox = {
     enable = true;
     profiles.tom = {
       search.engines = {
         "Nix Packages" = {
-          urls = [{
-            template = "https://search.nixos.org/packages";
-            params = [
-              { name = "type"; value = "packages"; }
-              { name = "query"; value = "{searchTerms}"; }
-            ];
-          }];
+          urls = [
+            {
+              template = "https://search.nixos.org/packages";
+              params = [
+                {
+                  name = "type";
+                  value = "packages";
+                }
+                {
+                  name = "query";
+                  value = "{searchTerms}";
+                }
+              ];
+            }
+          ];
 
           icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-          definedAliases = [ "@np" ];
+          definedAliases = ["@np"];
         };
       };
       #containersForce = true;
@@ -24,7 +34,7 @@
       bookmarks = [
         {
           name = "wikipedia";
-          tags = [ "wiki" ];
+          tags = ["wiki"];
           keyword = "wiki";
           url = "https://en.wikipedia.org/wiki/Special:Search?search=%s&go=Go";
         }
@@ -37,19 +47,18 @@
         "signon.rememberSignons" = false;
       };
 
-      userChrome = ''                         
-        /* some css */                        
-      '';                                      
+      userChrome = ''
+        /* some css */
+      '';
 
       extensions = with inputs.firefox-addons.packages."x86_64-linux"; [
-       ublock-origin
-       sponsorblock
-       bitwarden
-       old-reddit-redirect
-       reddit-enhancement-suite
-       istilldontcareaboutcookies
+        ublock-origin
+        sponsorblock
+        bitwarden
+        old-reddit-redirect
+        reddit-enhancement-suite
+        istilldontcareaboutcookies
       ];
-
     };
   };
 }

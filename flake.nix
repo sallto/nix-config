@@ -23,8 +23,9 @@
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nix-vscode-entensions = {
-      url ="github:nix-community/nix-vscode-extensions";
+    nix-vscode-extensions = {
+      url = "github:nix-community/nix-vscode-extensions";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
@@ -32,6 +33,7 @@
     self,
     nixpkgs,
     home-manager,
+    nix-vscode-extensions,
     ...
   } @ inputs: let
     inherit (self) outputs;

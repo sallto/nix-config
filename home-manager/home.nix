@@ -28,7 +28,7 @@
       outputs.overlays.additions
       outputs.overlays.modifications
       outputs.overlays.unstable-packages
-
+      inputs.nix-vscode-extensions.overlays.default
       # You can also add overlays exported from other flakes:
       # neovim-nightly-overlay.overlays.default
 
@@ -55,7 +55,13 @@
 
   # Add stuff for your user as you see fit:
   programs.neovim.enable = true;
-  home.packages = with pkgs; [ steam vscode-with-extensions];
+
+  home.packages = with pkgs; [
+    steam
+    fd
+    discord
+    alejandra
+  ];
 
   # Enable home-manager and git
   programs.home-manager.enable = true;

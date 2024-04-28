@@ -1,8 +1,7 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-
-{   
+{
   inputs,
   outputs,
   lib,
@@ -10,12 +9,12 @@
   pkgs,
   ...
 }: {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      # Home manager
-      inputs.home-manager.nixosModules.home-manager
-    ];
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    # Home manager
+    inputs.home-manager.nixosModules.home-manager
+  ];
 
   nixpkgs = {
     # You can add overlays here
@@ -42,6 +41,11 @@
     };
   };
 
+  environment.sessionVariables = rec {
+    PATH = [
+      "$HOME/Dokumente/Projekte/NixConfig"
+    ];
+  };
 
   # This will add each flake input as a registry
   # To make nix3 commands consistent with your flake
@@ -140,33 +144,30 @@
   users.users.tom = {
     isNormalUser = true;
     description = "tom";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = ["networkmanager" "wheel"];
     packages = with pkgs; [
       firefox
       kate
-    #  thunderbird
+      #vscode
+      #  thunderbird
     ];
   };
-
-
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-  #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  #  wget
-	inputs.home-manager.packages.${pkgs.system}.default
+    #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    #  wget
+    inputs.home-manager.packages.${pkgs.system}.default
   ];
 
-
   home-manager = {
-    extraSpecialArgs = { inherit inputs outputs; };
+    extraSpecialArgs = {inherit inputs outputs;};
     users = {
       # Import your home-manager configuration
       tom = import ../home-manager/home.nix;
-      };
     };
-
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -194,5 +195,4 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "23.11"; # Did you read the comment?
-
 }
