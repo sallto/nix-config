@@ -61,6 +61,7 @@
     fd
     discord
     alejandra
+    libnotify
   ];
 
   # Enable home-manager and git
