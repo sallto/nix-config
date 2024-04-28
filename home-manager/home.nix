@@ -51,7 +51,7 @@
   home = {
     username = "tom";
     homeDirectory = "/home/tom";
-    # sessionPath = ["$HOME/Dokumente/Projekte/NixConfig"];
+    sessionPath = ["$HOME/Dokumente/Projekte/NixConfig"];
   };
 
   # Add stuff for your user as you see fit:
