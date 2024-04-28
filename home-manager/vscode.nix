@@ -22,6 +22,7 @@
       donjayamanne.python-extension-pack
       ms-vscode-remote.remote-ssh
       eamodio.gitlens
+      jnoortheen.nix-ide
     ];
   };
 }

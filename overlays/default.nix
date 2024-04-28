@@ -20,4 +20,5 @@
       config.allowUnfree = true;
     };
   };
+  # nix { nixpkgs.overlays = [ inputs.nix-vscode-extensions.overlays.default ]; }
 }

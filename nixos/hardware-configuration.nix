@@ -68,7 +68,7 @@
     powerManagement.finegrained = false;
 
     # Use the NVidia open source kernel module (not to be confused with the
-    # independent third-party "nouveau" open source driver).
+    # independent third-party "nouveau"v open source driver).
     # Support is limited to the Turing and later architectures. Full list of
     # supported GPUs is at:
     # https://github.com/NVIDIA/open-gpu-kernel-modules#compatible-gpus
