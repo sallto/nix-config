@@ -41,7 +41,7 @@
     };
   };
 
-  environment.sessionVariables = rec {
+  environment.variables = rec {
     PATH = [
       "$HOME/Dokumente/Projekte/NixConfig"
     ];
